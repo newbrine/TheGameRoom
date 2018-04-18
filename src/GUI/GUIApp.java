@@ -11,7 +11,7 @@ public class GUIApp extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			AnchorPane root = (AnchorPane)FXMLLoader.load(GUIApp.class.getResource("MainScreen.fxml"));
+			AnchorPane root = (AnchorPane)FXMLLoader.load(GUIApp.class.getResource("CreateProfile.fxml"));
 			Scene scene = new Scene(root);
 			primaryStage.setScene(scene);
 			primaryStage.show();
