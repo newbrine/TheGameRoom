@@ -33,7 +33,7 @@ public class CreateProfileController {
 		fileChooser.getExtensionFilters().addAll(new ExtensionFilter(".png", "*.png"),
 				new ExtensionFilter(".jpeg", "*.jpeg"), new ExtensionFilter(".jpg","*.jpg"));
 		File file = fileChooser.showOpenDialog(pane.getScene().getWindow());
-		Image img = new Image("file:///"+file.getAbsolutePath());
+		Image img = new Image("file:///" + file.getAbsolutePath());
 		imageview.setImage(img);
 		
 	}
