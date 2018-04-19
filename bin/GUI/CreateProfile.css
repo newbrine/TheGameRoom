@@ -1,0 +1,7 @@
+.root {
+	-fx-background-image: url("https://www.homeleisuredirect.com/Assets/HLD/User/22267-galaga-arcade-overview.jpg")
+}
+
+.label {
+	-fx-text-fill: pink;
+}

@@ -31,4 +31,19 @@ public class SingleplayerController {
 		File file = new File("C:\\Users\\Ryan\\Downloads\\Galalite Two\\GalaliteTwo.jar");
 		Desktop.getDesktop().open(file);
 	}
+	
+	@FXML
+	public void openGameTwo() {
+		
+	}
+	
+	@FXML
+	public void openGameThree() {
+		
+	}
+	
+	@FXML
+	public void openGameFour() {
+		
+	}
 }
