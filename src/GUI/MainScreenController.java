@@ -5,7 +5,9 @@ import javafx.fxml.*;
 import javafx.scene.*;
 import javafx.scene.control.Button;
 import javafx.stage.*;
-import GUI.GUIApp;
+import networking.Client;
+import networking.Server;
+import GUI.Main;
 
 public class MainScreenController {
 	
@@ -17,6 +19,7 @@ public class MainScreenController {
 	
 	@FXML
 	public void initialize() {
+		Server server = new Server();
 		if(true) {
 			openCreateProfilePopup();
 		}
@@ -35,7 +38,7 @@ public class MainScreenController {
 		try {
 			Parent pane = FXMLLoader.load(getClass().getResource(s));
 			Scene scene = new Scene(pane);
-			GUIApp.getStage().setScene(scene);
+			Main.getStage().setScene(scene);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -43,7 +46,7 @@ public class MainScreenController {
 	
 	public void openCreateProfilePopup() {
 		try {
-			Parent root = FXMLLoader.load(GUIApp.class.getResource("CreateProfile.fxml"));
+			Parent root = FXMLLoader.load(Main.class.getResource("CreateProfile.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("Create Profile");
 			stage.setScene(new Scene(root));
