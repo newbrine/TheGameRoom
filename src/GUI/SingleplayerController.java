@@ -6,6 +6,8 @@ import java.io.IOException;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.paint.ImagePattern;
 
 public class SingleplayerController {
 
@@ -23,27 +25,32 @@ public class SingleplayerController {
 	
 	@FXML
 	public void initialize() {
-		
+		File file = new File(System.getProperty("user.dir")+"\\media\\galalite.PNG");
+		Image image = new Image("file:///"+file.getAbsolutePath());
+		gameOne.setTextFill(new ImagePattern(image));
 	}
 	
 	@FXML
 	public void openGameOne() throws IOException {
-		File file = new File("C:\\Users\\Ryan\\Downloads\\Galalite Two\\GalaliteTwo.jar");
+		File file = new File(System.getProperty("user.dir")+"\\GalaliteTwo.jar");
 		Desktop.getDesktop().open(file);
 	}
 	
 	@FXML
-	public void openGameTwo() {
-		
+	public void openGameTwo() throws IOException {
+		File file = new File(System.getProperty("user.dir")+"\\Matcher.jar");
+		Desktop.getDesktop().open(file);
 	}
 	
 	@FXML
-	public void openGameThree() {
-		
+	public void openGameThree() throws IOException {
+		File file = new File(System.getProperty("user.dir")+"\\Blackhole.jar");
+		Desktop.getDesktop().open(file);
 	}
 	
 	@FXML
-	public void openGameFour() {
-		
+	public void openGameFour() throws IOException {
+		File file = new File(System.getProperty("user.dir") + "\\BrickBreak.jar");
+		Desktop.getDesktop().open(file);
 	}
 }
