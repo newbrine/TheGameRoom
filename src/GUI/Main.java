@@ -1,21 +1,18 @@
 package GUI;
 
-import java.io.IOException;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 
-public class GUIApp extends Application {
+public class Main extends Application {
 	private static Stage pStage;
 	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			AnchorPane root = (AnchorPane)FXMLLoader.load(GUIApp.class.getResource("MainScreen.fxml"));
+			AnchorPane root = (AnchorPane)FXMLLoader.load(Main.class.getResource("MainScreen.fxml"));
 			Scene scene = new Scene(root, 633, 356);
 			primaryStage.setScene(scene);
 			primaryStage.show();
@@ -36,6 +33,6 @@ public class GUIApp extends Application {
 	}
 	
 	public static void setStage(Stage pStage) {
-		GUIApp.pStage = pStage;
+		Main.pStage = pStage;
 	}
 }
