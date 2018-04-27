@@ -1,9 +1,10 @@
 .root {
-	-fx-background-image: url("https://www.homeleisuredirect.com/Assets/HLD/User/22267-galaga-arcade-overview.jpg")
+	-fx-background-image: url("../../media/arcadeMachine.JPG")
 }
 
 .label {
 	-fx-text-fill: pink;
+	-fx-background-color: linear-gradient(rgba(0,0,0,0) 0%, rgba(0,0,0,.8) 50%, rgba(0,0,0,0) 90%); 
 }
 
 .text-input {
