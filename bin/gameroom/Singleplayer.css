@@ -1,0 +1,11 @@
+.root {
+	-fx-background-image: url("https://vignette.wikia.nocookie.net/r2da/images/e/eb/Fly-through-outer-space-nebula-and-stars-animated-background_scybrqakl_thumbnail-full11.png/revision/latest?cb=20171207021200") 
+}
+
+.button {
+	-fx-background-color: black;
+}
+
+.label {
+	-fx-text-fill: white;
+}
