@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="597.0" prefWidth="800.0" style="-fx-background-color: #E8E8E8;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="matcher.MatcherController">
+   <children>
+      <GridPane fx:id="grid" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #E8E8E8;" translateX="3.0" translateY="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="202.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Rectangle fx:id="tile1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="145.0" stroke="BLACK" strokeType="INSIDE" width="145.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </Rectangle>
+            <Rectangle fx:id="tile2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="145.0" stroke="BLACK" strokeType="INSIDE" width="145.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <Rectangle fx:id="tile3" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="145.0" stroke="BLACK" strokeType="INSIDE" width="145.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <Rectangle fx:id="tile4" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="145.0" stroke="BLACK" strokeType="INSIDE" width="144.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" />
+            <Rectangle fx:id="tile5" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="145.0" stroke="BLACK" strokeType="INSIDE" width="145.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <Rectangle fx:id="tile6" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="145.0" stroke="BLACK" strokeType="INSIDE" width="145.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <Rectangle fx:id="tile7" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="145.0" stroke="BLACK" strokeType="INSIDE" width="145.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <Rectangle fx:id="tile8" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="145.0" stroke="BLACK" strokeType="INSIDE" width="144.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <Rectangle fx:id="tile9" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="145.0" stroke="BLACK" strokeType="INSIDE" width="145.0" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <Rectangle fx:id="tile10" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="145.0" stroke="BLACK" strokeType="INSIDE" width="145.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <Rectangle fx:id="tile11" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="145.0" stroke="BLACK" strokeType="INSIDE" width="145.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <Rectangle fx:id="tile12" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="145.0" stroke="BLACK" strokeType="INSIDE" width="144.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <Rectangle fx:id="tile13" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="145.0" stroke="BLACK" strokeType="INSIDE" width="145.0" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+            <Rectangle fx:id="tile14" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="145.0" stroke="BLACK" strokeType="INSIDE" width="145.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+            <Rectangle fx:id="tile15" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="145.0" stroke="BLACK" strokeType="INSIDE" width="145.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+            <Rectangle fx:id="tile16" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="145.0" stroke="BLACK" strokeType="INSIDE" width="144.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+         </children>
+      </GridPane>
+      <AnchorPane fx:id="sidepane" layoutX="600.0" prefHeight="605.0" prefWidth="202.0" style="-fx-background-color: #E8E8E8;">
+         <children>
+            <Text fx:id="matchesLabel" fontSmoothingType="LCD" layoutX="59.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Matches" AnchorPane.leftAnchor="61.0" AnchorPane.rightAnchor="61.0">
+               <font>
+                  <Font name="Agency FB Bold" size="28.0" />
+               </font>
+            </Text>
+            <Text fx:id="matches" layoutX="93.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" AnchorPane.leftAnchor="93.0" AnchorPane.rightAnchor="93.2412109375">
+               <font>
+                  <Font name="Agency FB" size="34.0" />
+               </font>
+            </Text>
+            <Text fx:id="timeLabel" fontSmoothingType="LCD" layoutX="57.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time Left" AnchorPane.leftAnchor="57.0" AnchorPane.rightAnchor="57.732421875">
+               <font>
+                  <Font name="Agency FB Bold" size="28.0" />
+               </font>
+            </Text>
+            <Text fx:id="time" layoutX="73.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0" text="01:00" AnchorPane.leftAnchor="73.0" AnchorPane.rightAnchor="72.1728515625">
+               <font>
+                  <Font name="Agency FB" size="34.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
