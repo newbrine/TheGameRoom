@@ -16,9 +16,9 @@
    <children>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="514.0" prefWidth="707.0">
          <children>
-            <Button fx:id="gameOne" layoutX="40.0" layoutY="59.0" mnemonicParsing="false" onAction="#openGameOne" prefHeight="160.0" prefWidth="240.0">
+            <Button fx:id="gameOne" layoutX="40.0" layoutY="59.0" mnemonicParsing="false" onAction="#openGalalite" prefHeight="160.0" prefWidth="240.0">
                <graphic>
-                  <ImageView fitHeight="159.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="159.0" fitWidth="250.0" onMouseClicked="#openGalalite" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../media/galalite.PNG" />
                      </image>

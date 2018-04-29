@@ -1,9 +1,12 @@
 package profile;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.List;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -12,6 +15,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javafx.stage.FileChooser.ExtensionFilter;
 
 public class CreateProfileController {
@@ -33,12 +37,25 @@ public class CreateProfileController {
 
 	@FXML
 	private Button done;
+	
+	@FXML
+	private Label title;
 
 	public File Imagefile;
+	public File userFile = new File(System.getProperty("user.dir") + "//media//user.txt");
 
 	@FXML
 	public void initialize() {
-
+		if (userFile.exists()) {
+			title.setText("Edit Profile");
+			Profile user = new Profile(userFile);
+			List<String> userInfo = user.loadFile();
+	    	nameField.setText(userInfo.get(0));
+	    	birthField.setText(userInfo.get(1));
+	    	bioField.setText(userInfo.get(2));
+	    	imageview.setImage(new Image(userInfo.get(3)));
+	    	Imagefile = new File(userInfo.get(3).replaceAll("file:///", ""));
+		}
 	}
 
 	@FXML
@@ -61,7 +78,14 @@ public class CreateProfileController {
 		String bio = bioField.getText();
 		String filepath = "file:///" + Imagefile.getAbsolutePath();
 		Profile user = new Profile(name, birth, bio, filepath);
-		
+		try {
+			user.saveFile();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Stage stage = (Stage) pane.getScene().getWindow();
+		stage.close();
 	}
 
 }

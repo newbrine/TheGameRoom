@@ -1,13 +1,16 @@
 package gameroom;
 
-import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
+import javafx.stage.Stage;
 
 public class SingleplayerController {
 
@@ -31,28 +34,36 @@ public class SingleplayerController {
 	}
 	
 	@FXML
-	public void openGameOne() throws IOException {
-		File file = new File(System.getProperty("user.dir")+"\\GalaliteTwo.jar");
-		System.out.println(file.getAbsolutePath());
-		Desktop.getDesktop().open(file);
+	public void openGalalite() throws IOException{
+		gamePopup("/galalite/src/main/StartScreen.fxml", "Galalite Two");
 	}
 	
 	@FXML
 	public void openGameTwo() throws IOException {
-		File file = new File(System.getProperty("user.dir")+"\\Matcher.jar");
-		System.out.println(file.getAbsolutePath());
-		Desktop.getDesktop().open(file);
+		gamePopup("/matcher/MatchingGameGUI.fxml", "Matcher");
+		
 	}
 	
 	@FXML
 	public void openGameThree() throws IOException {
-		File file = new File(System.getProperty("user.dir")+"\\Blackhole.jar");
-		System.out.println(file.getAbsolutePath());
-		Desktop.getDesktop().open(file);
+		gamePopup("/blackhole/BlackholeGameGUI.fxml", "Blackhole");
 	}
 	
 	@FXML
 	public void openGameFour() {
 		
+	}
+	
+	public void gamePopup(String file, String title) {
+		try {
+			Parent root = FXMLLoader.load(Main.class.getResource(file));
+			Stage stage = new Stage();
+			stage.setTitle(title);
+			stage.setScene(new Scene(root));
+			stage.toFront();
+			stage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
