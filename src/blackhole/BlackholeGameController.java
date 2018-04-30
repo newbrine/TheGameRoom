@@ -1,12 +1,21 @@
 package blackhole;
 
 import java.io.File;
+import java.io.IOException;
 
+import gameroom.EndScreenController;
+import gameroom.MainScreenController;
+import gameroom.MultiplayerController;
 import gameroom.Score;
 import javafx.animation.AnimationTimer;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -98,6 +107,23 @@ public class BlackholeGameController {
 		alert.setOnHidden(event -> {
 			Stage stage = (Stage) pane.getScene().getWindow();
 			stage.close();
+			if (MultiplayerController.multiplayer) {
+				try {
+					Parent root = FXMLLoader.load(MainScreenController.class.getResource("EndScreen.fxml"));
+					stage = new Stage();
+					stage.setTitle("Black Hole Game");
+					stage.setScene(new Scene(root,600,600));
+					stage.toFront();
+					stage.show();
+					
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			Platform.runLater(() -> {
+				EndScreenController.setYourScore(getClicks());
+			});
 		});
 		alert.show();
 	}
@@ -108,5 +134,9 @@ public class BlackholeGameController {
 		MediaPlayer mediaPlayer = new MediaPlayer(song);
 		mediaPlayer.play();
 	}
-
+	
+	public String getClicks() {
+		return clicks + "";
+	}
+	
 }
