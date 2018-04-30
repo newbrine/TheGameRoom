@@ -17,9 +17,11 @@ public class MultiplayerController {
 	@FXML
 	Button gameFour;
 	
+	public static Boolean multiplayer = true;
+	
 	@FXML
 	public void initialize() {
-		
+		multiplayer = true;
 	}
 	
 	@FXML
