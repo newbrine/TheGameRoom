@@ -25,7 +25,6 @@ public class Paddle {
 		} else {
 			xCor += speed * sign;
 		}
-		//System.out.println("paddle moveHelp, add: " + add + " sign: " + sign + " bounds: " + bounds);
 		draw();
 
 	}

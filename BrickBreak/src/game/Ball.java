@@ -39,7 +39,7 @@ public class Ball {
 
 	private double bounceOffOuterWalls(double cor, double d) {
 		if (cor + d <= 5 || cor + d >= 495) {
-			return d * -0.8;
+			return (d > 1) ? d * -0.8 : d * -1;
 		}
 		return d;
 	}
@@ -52,4 +52,10 @@ public class Ball {
 		ball.setLayoutX(xCor);
 		ball.setLayoutY(yCor);
 	}
+	
+	@Override
+	public String toString() {
+		return "Circle: " + ball.toString() + "dx: " + dx + "dy: " + dy + "xCor: " + xCor + "yCor: " + yCor;
+	}
+	
 }

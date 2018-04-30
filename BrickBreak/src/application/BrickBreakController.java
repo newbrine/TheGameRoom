@@ -10,6 +10,9 @@ import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
@@ -529,6 +532,12 @@ public class BrickBreakController {
     @FXML
     private Pane pane;
 
+    @FXML
+    private Label score;
+
+    @FXML
+    private Label time;
+
     private Scene scene;
 
     private Ball gameBall;
@@ -542,7 +551,6 @@ public class BrickBreakController {
 	private boolean right = false;
 
 	private Movement clock;
-	private int time;
 
 
 	@FXML
@@ -598,7 +606,6 @@ public class BrickBreakController {
 
 	    	listenForKeys();
 	    	pane.requestFocus();
-	    	time = 300;
 
 	    	clock = new Movement();
 	    	clock.start();
@@ -607,7 +614,6 @@ public class BrickBreakController {
 
     private class Movement extends AnimationTimer {
     	private long lastGameInterval = 0;
-    	private int countToSixty;
     	private boolean play = true;
 
     	@Override
@@ -627,29 +633,22 @@ public class BrickBreakController {
             			right = false;
             		}
 
-           			if (countToSixty < 60) {
-           				countToSixty += 1;
-           			} else {
-           				countToSixty = 0;
-           				time -= 1;
-           				if (time <= 0) {
-           					play = false;
-           				}
-           			}
+           			play = game.countDown();
+           			updateGUI();
+
            			if (game.checkLoss() || game.checkWin()) {
            				play = false;
            			}
-        		} else {
-        			game.increaseScore(time * 10);
         		}
+    		} else {
+    			updateGUI();
+    			gameOver("Your score is :" + game.getScore());
     		}
-
     	}
     }
 
     private void listenForKeys() {
     	this.scene = Main.getScene();
-    	System.out.println(scene);
     	scene.setOnKeyPressed(new javafx.event.EventHandler<javafx.scene.input.KeyEvent>() {
     		@Override
     		public void handle(javafx.scene.input.KeyEvent event) {
@@ -665,4 +664,20 @@ public class BrickBreakController {
 			}
     	});
     }
+
+    private void updateGUI() {
+    	score.setText(game.getScore() + "");
+    	time.setText(game.getTime() + "");
+    }
+
+    private void gameOver(String info) {
+    	Platform.runLater(() -> {
+    		Alert alert = new Alert(AlertType.INFORMATION);
+    		alert.setTitle("BrickBreaker");
+    		alert.setHeaderText("Game Over");
+    		alert.setContentText(info);
+    		alert.show();
+    	});
+		clock.stop();
+	}
 }

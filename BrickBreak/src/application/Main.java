@@ -15,9 +15,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("/application/BrickBreak.fxml"));
-		System.out.println("try2");
-		this.scene = new Scene(root, 500, 500, Color.BLACK);
-		System.out.println(scene);
+		this.scene = new Scene(root, 700, 500, Color.BLACK);
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}

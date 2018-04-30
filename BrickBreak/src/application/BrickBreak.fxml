@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -11,7 +17,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="502.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.BrickBreakController">
+<BorderPane prefHeight="502.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.BrickBreakController">
    <center>
       <SplitPane dividerPositions="0.29797979797979796" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <items>
@@ -201,20 +207,20 @@
                   <Rectangle fx:id="d67" arcHeight="5.0" arcWidth="5.0" fill="#ff2121" height="6.0" layoutX="415.0" layoutY="247.0" stroke="BLACK" strokeType="INSIDE" width="65.0" />
                </children>
             </Pane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <AnchorPane maxHeight="500.0" maxWidth="200.0" minHeight="500.0" minWidth="200.0" prefHeight="500.0" prefWidth="200.0">
                <children>
                   <Label layoutX="68.0" layoutY="150.0" text="Score:" underline="true">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label layoutX="78.0" layoutY="195.0" text="Label" />
+                  <Label fx:id="score" layoutX="78.0" layoutY="195.0" text="Label" />
                   <Label layoutX="22.0" layoutY="235.0" text="Time Remaining:" underline="true">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label layoutX="78.0" layoutY="282.0" text="Label" />
+                  <Label fx:id="time" layoutX="78.0" layoutY="282.0" text="Label" />
                </children>
             </AnchorPane>
         </items>

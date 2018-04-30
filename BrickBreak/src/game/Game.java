@@ -2,20 +2,28 @@ package game;
 
 import java.util.ArrayList;
 
+import javafx.application.Platform;
+
 public class Game {
 	ArrayList<Brick> blocks;
+	ArrayList<Brick> toRemove;
 	Ball   ball;
 	Paddle paddle;
 	Duple  ddXddY;
 
-	int    score;
+	int score;
+	int time;
+	int countToSixty;
 
 	public Game(ArrayList<Brick> blocks, Ball ball, Paddle paddle) {
+		this.toRemove = new ArrayList<Brick>();
 		this.blocks = new ArrayList<Brick>();
 		this.ball   = ball;
 		this.paddle = paddle;
 		this.score  = 0;
+		this.time   = 60;
 		this.ddXddY = new Duple(1, 1);
+		this.countToSixty = 0;
 
 		copyBlocksList(blocks);
 	}
@@ -34,28 +42,47 @@ public class Game {
 		return score;
 	}
 
+	public int getTime() {
+		return time;
+	}
+
 	public boolean checkWin() {
-		return blocks.isEmpty();
+		if (blocks.isEmpty()) {
+			score += time * 10;
+			return true;
+		}
+		return false;
 	}
 
 	public boolean checkLoss() {
-		return ball.getCircle().getCenterY() > 490;
+		return ball.getCircle().getLayoutY() > 470;
 	}
 
 	public void handleCollisions() {
 		handleBrickCollision();
 		handlePaddleCollision();
+		removeBricks();
 	}
 
 	private void handleBrickCollision() {
-		for (Brick b : blocks) {
-			if (b.getCollision(ddXddY, ball)) {
-				score += 100;
-				blocks.remove(b);
 
-				updateBallVelocity();
+		Platform.runLater(() -> {
+			for (Brick b : blocks) {
+				if (b.getCollision(ddXddY, ball)) {
+					score += 100;
+					toRemove.add(b);
+
+					updateBallVelocity();
+				}
 			}
+		});
+	}
+
+	private void removeBricks() {
+		for (Brick b : toRemove) {
+			blocks.remove(b);
 		}
+		toRemove.clear();
 	}
 
 	private void handlePaddleCollision() {
@@ -76,7 +103,6 @@ public class Game {
 
 		ball.setDX(dx);
 		ball.setDY(dy);
-		System.out.println(dx + " " + dy + " " + dfpc);
 	}
 
 	private void updateBallVelocity() {
@@ -86,5 +112,19 @@ public class Game {
 		ball.setDY(dy);
 
 		ddXddY.set(1, 1);
+	}
+
+	public boolean countDown() {
+		if (countToSixty < 60) {
+				countToSixty += 1;
+		} else {
+			countToSixty = 0;
+			time -= 1;
+			if (time <= 0) {
+
+				return false;
+			}
+		}
+		return true;
 	}
 }
