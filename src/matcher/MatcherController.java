@@ -1,6 +1,7 @@
 package matcher;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -8,10 +9,15 @@ import java.util.TimerTask;
 
 import matcher.MatcherGame;
 import matcher.Tile;
+import gameroom.MainScreenController;
+import gameroom.MultiplayerController;
 import gameroom.Score;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
@@ -42,6 +48,8 @@ public class MatcherController {
 	public List<String> idList = new ArrayList<String>();
 
 	public MatcherGame game;
+	
+	public Timer timer;
 
 	public int match = 0;
 	public int seconds = 20;
@@ -82,7 +90,7 @@ public class MatcherController {
 	}
 	
 	public void clockStart() {
-		Timer timer = new Timer();
+		timer = new Timer();
 		TimerTask countdown = new TimerTask() {
 			public void run() {
 				displayCountdown(timer);
@@ -103,7 +111,7 @@ public class MatcherController {
 			Platform.runLater(() -> {
 				Score score = new Score(Integer.parseInt(matches.getText()));
 				disableGame();
-				loseAlert("You got " + matches.getText() + " matches!");
+				gameEndAlert("You got " + matches.getText() + " matches!");
 			});
 		}
 	}
@@ -151,6 +159,7 @@ public class MatcherController {
 			}
 			idList = new ArrayList<String>();
 		}
+		checkWin();
 	}
 
 	public void resetTiles(List<String> idList) {
@@ -164,14 +173,44 @@ public class MatcherController {
 		}
 	}
 
-	public void loseAlert(String message) {
-		Alert alert = new Alert(AlertType.ERROR);
+	public void gameEndAlert(String message) {
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Matcher");
+		alert.setHeaderText("Game Over");
 		alert.setContentText(message);
 		alert.setOnHidden(event -> {
 			Stage stage = (Stage) grid.getScene().getWindow();
 			stage.close();
+			if (MultiplayerController.multiplayer) {
+				try {
+					Parent root = FXMLLoader.load(MainScreenController.class.getResource("EndScreen.fxml"));
+					stage = new Stage();
+					stage.setTitle("Black Hole Game");
+					stage.setScene(new Scene(root));
+					stage.toFront();
+					stage.show();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 		});
 		alert.show();
 	}
+	
+	private void checkWin() {
+		if(match == tileRectangles.size() / 2) {
+			disableGame();
+			timer.cancel();
+			gameEndAlert("You got " + match + " matches with " + seconds + " seconds remaining!");
+		}
+	}
 
+	public int getMatches() {
+		return match;
+	}
+	
+	public int getRemainingTime() {
+		return seconds;
+	}
 }
