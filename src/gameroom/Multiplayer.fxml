@@ -20,7 +20,7 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="600.0">
                      <children>
-                        <Button layoutX="39.0" layoutY="37.0" mnemonicParsing="false" prefHeight="161.0" prefWidth="221.0">
+                        <Button layoutX="39.0" layoutY="37.0" mnemonicParsing="false" onAction="#launchGameOne" prefHeight="161.0" prefWidth="221.0">
                            <graphic>
                               <ImageView fitHeight="140.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -28,7 +28,7 @@
                                  </image></ImageView>
                            </graphic>
                         </Button>
-                        <Button layoutX="39.0" layoutY="255.0" mnemonicParsing="false" prefHeight="160.0" prefWidth="221.0">
+                        <Button layoutX="39.0" layoutY="255.0" mnemonicParsing="false" onAction="#openGameThree" prefHeight="160.0" prefWidth="221.0">
                            <graphic>
                               <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -36,7 +36,7 @@
                                  </image></ImageView>
                            </graphic>
                         </Button>
-                        <Button layoutX="336.0" layoutY="255.0" mnemonicParsing="false">
+                        <Button layoutX="336.0" layoutY="255.0" mnemonicParsing="false" onAction="#openGameFour">
                            <graphic>
                               <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -44,7 +44,7 @@
                                  </image></ImageView>
                            </graphic>
                         </Button>
-                        <Button layoutX="336.0" layoutY="37.0" mnemonicParsing="false">
+                        <Button layoutX="336.0" layoutY="37.0" mnemonicParsing="false" onAction="#openGameTwo">
                            <graphic>
                               <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.List;
 import gameroom.MessageType;
 import gameroom.MultiplayerController;
+import javafx.application.Platform;
 import profile.Profile;
 
 public class MessageHandler {
@@ -33,18 +34,19 @@ public class MessageHandler {
 		}
 		profile.setID(message);
 		profile.saveFile();
-		System.out.println("edit profile id " + message);
 	}
 	
 	private void startGame(String message) throws IOException {
-		if(message.equals("Galalite 2")) {
-			MultiplayerController.gamePopup("/galalite/StartScreen.fxml", "Galalite 2");
-		} else if(message.equals("Matcher")) {
-			MultiplayerController.gamePopup("/matcher/MatchingGameGUI.fxml", "Matcher");
-		} else if(message.equals("Black Hole")) {
-			MultiplayerController.gamePopup("/blackhole/BlackholeGameGUI.fxml", "Blackhole");
-		} else {
-			MultiplayerController.gamePopup("/brickbreaker/BrickBreak.fxml", "Brick Break");
-		}
+		Platform.runLater(() -> {
+			if(message.equals("Galalite 2")) {
+				MultiplayerController.gamePopup("/galalite/StartScreen.fxml", "Galalite 2");
+			} else if(message.equals("Matcher")) {
+				MultiplayerController.gamePopup("/matcher/MatchingGameGUI.fxml", "Matcher");
+			} else if(message.equals("Black Hole")) {
+				MultiplayerController.gamePopup("/blackhole/BlackholeGameGUI.fxml", "Blackhole");
+			} else {
+				MultiplayerController.gamePopup("/brickbreaker/BrickBreak.fxml", "Brick Break");
+			}
+		});
 	}
 }

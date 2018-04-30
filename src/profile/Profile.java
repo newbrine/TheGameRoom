@@ -50,12 +50,11 @@ public class Profile {
 	}
 	
 	public Profile() throws IOException {
-		userFile = new File(System.getProperty("user.dir") + "//media//user.txt");
-		Profile profile = new Profile(userFile);
-		List<String> profileDetails = profile.loadFile();
-		profile.updateProfile(profileDetails.get(0), profileDetails.get(1), profileDetails.get(2), profileDetails.get(3));
-		profile.setID(profileDetails.get(4));
-		profile.saveFile();
+		this.userFile = new File(System.getProperty("user.dir")+"//media//user.txt");
+		List<String> profileDetails = loadFile();
+		updateProfile(profileDetails.get(0), profileDetails.get(1), profileDetails.get(2), profileDetails.get(3));
+		setID(profileDetails.get(4));
+		saveFile();
 	}
 
 	public void saveFile() throws IOException {
