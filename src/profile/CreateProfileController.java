@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+import gameroom.BadNews;
+import gameroom.MessageType;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -16,6 +18,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import networking.Client;
 import javafx.stage.FileChooser.ExtensionFilter;
 
 public class CreateProfileController {
@@ -37,13 +40,14 @@ public class CreateProfileController {
 
 	@FXML
 	private Button done;
-	
+
 	@FXML
 	private Label title;
 
 	public File Imagefile;
 	public File userFile = new File(System.getProperty("user.dir") + "//media//user.txt");
 
+	BadNews badNews = new BadNews();
 	@FXML
 	public void initialize() {
 		if (userFile.exists()) {
@@ -80,8 +84,9 @@ public class CreateProfileController {
 		Profile user = new Profile(name, birth, bio, filepath);
 		try {
 			user.saveFile();
+			Client c = new Client(MessageType.PROFILE.ordinal() + " " + user.serialize());
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			badNews.badNews(e.getMessage());
 			e.printStackTrace();
 		}
 		Stage stage = (Stage) pane.getScene().getWindow();
