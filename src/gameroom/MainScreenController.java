@@ -26,7 +26,6 @@ public class MainScreenController {
 	
 	@FXML
 	public void initialize() {
-		Server server = new Server();
 		if(!userFile.exists()) {
 			openProfilePopup("/profile/CreateProfile.fxml","Create Profile");
 			userFile = new File(System.getProperty("user.dir") + "//media//user.txt");
