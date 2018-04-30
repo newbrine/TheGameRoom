@@ -6,6 +6,7 @@ import java.util.List;
 
 import gameroom.BadNews;
 import gameroom.MessageType;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -19,6 +20,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import networking.Client;
+import networking.Server;
 import javafx.stage.FileChooser.ExtensionFilter;
 
 public class CreateProfileController {
