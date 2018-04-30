@@ -50,11 +50,11 @@ public class CreateProfileController {
 			title.setText("Edit Profile");
 			Profile user = new Profile(userFile);
 			List<String> userInfo = user.loadFile();
-	    	nameField.setText(userInfo.get(0));
-	    	birthField.setText(userInfo.get(1));
-	    	bioField.setText(userInfo.get(2));
-	    	imageview.setImage(new Image(userInfo.get(3)));
-	    	Imagefile = new File(userInfo.get(3).replaceAll("file:///", ""));
+			nameField.setText(userInfo.get(0));
+			birthField.setText(userInfo.get(1));
+			bioField.setText(userInfo.get(2));
+			imageview.setImage(new Image(userInfo.get(3)));
+			Imagefile = new File(userInfo.get(3).replaceAll("file:///", ""));
 		}
 	}
 
