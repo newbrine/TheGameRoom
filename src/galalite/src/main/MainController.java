@@ -30,6 +30,8 @@ import galalite.src.ships.Bullet;
 import galalite.src.ships.EnemyShip;
 import galalite.src.ships.PlayerShip;
 import galalite.src.ships.Ship;
+import gameroom.MainScreenController;
+import gameroom.MultiplayerController;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -99,8 +101,6 @@ public class MainController {
 			armastice = 100;
 
 		});
-
-		// System.out.println("Hello");
 	}
 	
 	private void setUpGameState() {
@@ -153,7 +153,6 @@ public class MainController {
 		bg2.relocate(0, (-bg2.getImage().getHeight() * 2) + gamePane.getHeight());
 
 		backgroundPane1.getChildren().add(bg1);
-		// backgroundPane2.getChildren().add(bg2);
 		currentBG = bg1;
 		nextBG = bg2;
 	}
@@ -190,7 +189,6 @@ public class MainController {
 			public void handle(KeyEvent event) {
 				switch (event.getCode()) {
 				case SPACE:
-					// player.fire(false);
 					break;
 				case A:
 					if (currentKey == KeyCode.A) {
@@ -336,17 +334,10 @@ private void saveHighScore() {
 }
 
 	private ArrayList<ArrayList<Ship>> detectCollision() {
-		// check friendly collision
 
 		ArrayList<Ship> enemiesToRemove = new ArrayList<>();
 		ArrayList<Ship> playerBulletsToRemove = new ArrayList<>();
 		ArrayList<Ship> enemyBulletsToRemove = new ArrayList<>();
-		// if (playerBullets.isEmpty() || enemyObjects.isEmpty()) {
-		// ArrayList<ArrayList<Ship>> toReturn = new ArrayList<ArrayList<Ship>>();
-		// toReturn.add(new ArrayList<>());
-		// toReturn.add(new ArrayList<>());
-		// return toReturn;
-		// }
 		for (Ship b : playerBullets) {
 			for (Ship s : enemyObjects) {
 				if (detectCollisionHelper(s, b)) {
@@ -376,8 +367,6 @@ private void saveHighScore() {
 		toReturn.add(playerBulletsToRemove);
 		toReturn.add(enemyBulletsToRemove);
 		return toReturn;
-
-		// check enemy collision
 	}
 
 	private void takeDamage() {
@@ -387,8 +376,18 @@ private void saveHighScore() {
 			player.setXCord(gamePane.getWidth() / 2);
 		} else {
 			clock.stop();
-			saveHighScore();
-			changeScene("StartScreen.fxml");
+			if (MultiplayerController.multiplayer) {
+				try {
+					Parent root = FXMLLoader.load(MainScreenController.class.getResource("EndScreen.fxml"));
+					Stage stage = new Stage();
+					stage.setTitle("Galalite");
+					stage.setScene(new Scene(root));
+					stage.toFront();
+					stage.show();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 
 	}
@@ -398,17 +397,6 @@ private void saveHighScore() {
 			return true;
 		}
 		return false;
-
-		// if ((s.getXCord() >= b.getXCord() && s.getXCord() <= b.getXCord() +
-		// b.getXSize()) || (s.getXCord() + s.getXSize() >= b.getXCord() && s.getXCord()
-		// + s.getXSize() <= b.getXCord() + b.getXSize())) {
-		// if ((s.getYCord() >= b.getYCord() && s.getYCord() <= b.getYCord() +
-		// b.getYSize()) || (s.getYCord() + s.getYSize() >= b.getYCord() && s.getYCord()
-		// + s.getYSize() <= b.getYCord() + b.getYSize())) {
-		// return true;
-		// }
-		// }
-		// return false;
 	}
 
 	public boolean detectOutOfBoundBullets(Ship b) {
@@ -422,7 +410,6 @@ private void saveHighScore() {
 	private void enemyFire(Ship e) {
 		if (Math.random() * (enemyObjects.size() + enemyBullets.size()) * 8 <= 1) {
 			spawnEnemyBullet(e);
-			//System.out.println(enemyBullets.size() + "  " + enemyObjects.size());
 		}
 	}
 
@@ -482,13 +469,6 @@ private void saveHighScore() {
 				player.draw();
 				handleInteractions();
 			}
-			/*
-			 * if (now - lastBGInterval >= bgInterval) { lastBGInterval = now;
-			 *
-			 *
-			 * //checkBG(); //System.out.println("1 " + bg1.getLayoutY());
-			 * //System.out.println("2 " + bg2.getLayoutY()); }
-			 */
 		}
 	}
 
