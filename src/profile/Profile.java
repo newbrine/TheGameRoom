@@ -30,7 +30,7 @@ public class Profile {
 		this.birth = b;
 		this.bio = bi;
 		this.imageFile = i;
-		this.id  = "0";
+		this.id = "0";
 		try {
 			this.ip = InetAddress.getLocalHost().getHostAddress();
 		} catch (UnknownHostException e) {
@@ -38,7 +38,7 @@ public class Profile {
 			e.printStackTrace();
 		}
 	}
-
+	
 	public Profile(File user) {
 		this.userFile = user;
 		try {
@@ -47,6 +47,15 @@ public class Profile {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public Profile() throws IOException {
+		userFile = new File(System.getProperty("user.dir") + "//media//user.txt");
+		Profile profile = new Profile(userFile);
+		List<String> profileDetails = profile.loadFile();
+		profile.updateProfile(profileDetails.get(0), profileDetails.get(1), profileDetails.get(2), profileDetails.get(3));
+		profile.setID(profileDetails.get(4));
+		profile.saveFile();
 	}
 
 	public void saveFile() throws IOException {
@@ -79,21 +88,21 @@ public class Profile {
 			}
 			return profile;
 	}
-
+	
 	public void updateProfile(String n, String b, String bi, String i) {
 		setName(n);
 		setBirth(b);
 		setBio(bi);
 		setImageFile(i);
 	}
-
+	
 	public String serialize() throws IOException {
 		String image = imageToByteArrayString();
 		String string = id + "~" + name + "~" + ip + "~" + birth + "~" + bio + "~" + image;
 		System.out.println(string);
 		return string;
 	}
-
+	
 	public String imageToByteArrayString() throws IOException {
 		String file = imageFile.replace("file:///", "");
 		File fi = new File(file);
@@ -101,39 +110,43 @@ public class Profile {
 		String content = fileContent.toString();
 		return content;
 	}
-
+	
 	public String getName() {
 		return this.name;
 	}
-
+	
 	public String getBirth() {
 		return this.birth;
 	}
-
+	
 	public String getBio() {
 		return this.bio;
 	}
-
+	
 	public String getImageFile() {
 		return this.imageFile;
 	}
-
+	
 	public File getFile() {
 		return this.userFile;
 	}
-
+	
+	public String getID() {
+		return this.id;
+	}
+	
 	public void setName(String n) {
 		this.name = n;
 	}
-
+	
 	public void setBirth(String b) {
 		this.birth = b;
 	}
-
+	
 	public void setBio(String b) {
 		this.bio = b;
 	}
-
+	
 	public void setImageFile(String i) {
 		this.imageFile = i;
 	}
@@ -141,5 +154,4 @@ public class Profile {
 	public void setID(String newID) {
 		this.id = newID;
 	}
-
 }

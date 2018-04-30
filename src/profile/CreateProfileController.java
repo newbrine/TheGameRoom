@@ -94,5 +94,4 @@ public class CreateProfileController {
 		Stage stage = (Stage) pane.getScene().getWindow();
 		stage.close();
 	}
-
 }

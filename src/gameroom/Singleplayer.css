@@ -7,5 +7,6 @@
 }
 
 .label {
-	-fx-text-fill: white;
+	-fx-text-fill: pink;
+	-fx-background-color: linear-gradient(rgba(0,0,0,0) 0%, rgba(0,0,0,.8) 50%, rgba(0,0,0,0) 90%);
 }

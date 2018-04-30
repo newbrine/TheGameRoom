@@ -1,5 +1,5 @@
 package gameroom;
 
 public enum MessageType {
-	PROFILE, IDUPDATE;
+		PROFILE, IDUPDATE, REQUESTGAME, GAMEFOUND, ONLINEPLAYER;
 }

@@ -120,10 +120,10 @@ public class BlackholeGameController {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+				Platform.runLater(() -> {
+					EndScreenController.setYourScore(getClicks());
+				});
 			}
-			Platform.runLater(() -> {
-				EndScreenController.setYourScore(getClicks());
-			});
 		});
 		alert.show();
 	}
