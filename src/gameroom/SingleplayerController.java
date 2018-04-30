@@ -26,6 +26,9 @@ public class SingleplayerController {
 	@FXML
 	Button gameFour;
 	
+	Parent root;
+	static Stage stage;
+	
 	@FXML
 	public void initialize() {
 		File file = new File(System.getProperty("user.dir")+"\\media\\galalite.PNG");
@@ -35,7 +38,7 @@ public class SingleplayerController {
 	
 	@FXML
 	public void openGalalite() throws IOException{
-		gamePopup("/galalite/src/main/StartScreen.fxml", "Galalite Two");
+		gamePopup("/galalite/StartScreen.fxml", "Galalite Two");
 	}
 	
 	@FXML
@@ -51,13 +54,13 @@ public class SingleplayerController {
 	
 	@FXML
 	public void openGameFour() {
-		
+		gamePopup("/brickbreaker/BrickBreak.fxml", "Brick Break");
 	}
 	
 	public void gamePopup(String file, String title) {
 		try {
-			Parent root = FXMLLoader.load(Main.class.getResource(file));
-			Stage stage = new Stage();
+			root = FXMLLoader.load(Main.class.getResource(file));
+			stage = new Stage();
 			stage.setTitle(title);
 			stage.setScene(new Scene(root));
 			stage.toFront();
@@ -65,5 +68,13 @@ public class SingleplayerController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public Parent getParent() {
+		return root;
+	}
+	
+	public static Stage getStage() {
+		return stage;
 	}
 }
