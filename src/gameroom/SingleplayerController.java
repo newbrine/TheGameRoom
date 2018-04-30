@@ -1,5 +1,6 @@
 package gameroom;
 
+import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
 
@@ -38,7 +39,7 @@ public class SingleplayerController {
 	
 	@FXML
 	public void openGalalite() throws IOException{
-		gamePopup("/galalite/StartScreen.fxml", "Galalite Two");
+		Desktop.getDesktop().open(new File(System.getProperty("user.dir") + "\\galaliteTwo.jar"));
 	}
 	
 	@FXML

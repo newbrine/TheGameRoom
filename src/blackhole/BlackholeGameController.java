@@ -2,9 +2,11 @@ package blackhole;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.InetAddress;
 
 import gameroom.EndScreenController;
 import gameroom.MainScreenController;
+import gameroom.MessageType;
 import gameroom.MultiplayerController;
 import gameroom.Score;
 import javafx.animation.AnimationTimer;
@@ -23,6 +25,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import networking.Client;
 
 public class BlackholeGameController {
 
@@ -115,7 +118,8 @@ public class BlackholeGameController {
 					stage.setScene(new Scene(root,600,600));
 					stage.toFront();
 					stage.show();
-					
+					Client client = new Client(MessageType.SENDSCORE.ordinal() + " "  + InetAddress.getLocalHost().getHostAddress()
+												+ " " + getClicks() + "Black_Hole");
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

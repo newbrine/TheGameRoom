@@ -35,6 +35,7 @@ public class MultiplayerController {
 	
 	@FXML
 	Label ageLabel;
+	
 	public File userFile = new File(System.getProperty("user.dir") + "//media//user.txt");
 	public static Boolean multiplayer = false;
 	Profile profile;
@@ -52,11 +53,11 @@ public class MultiplayerController {
 			e.printStackTrace();
 		}
 		multiplayer = true;
-		profile = new Profile(new File("user.txt"));
-		Platform.runLater(() -> {
+		//Platform.runLater(() -> {
+			System.out.println("Name" + profile.getName());
 			nameLabel.setText(profile.getName());
 			ageLabel.setText(profile.getBirth());
-		});
+		//});
 	}
 	
 	@FXML

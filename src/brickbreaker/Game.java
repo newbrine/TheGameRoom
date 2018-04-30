@@ -11,7 +11,7 @@ public class Game {
 	Paddle paddle;
 	Duple  ddXddY;
 
-	int score;
+	static int score;
 	int time;
 	int countToSixty;
 
@@ -38,7 +38,7 @@ public class Game {
 		score += points;
 	}
 
-	public int getScore() {
+	public static int getScore() {
 		return score;
 	}
 

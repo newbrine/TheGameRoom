@@ -1,7 +1,10 @@
 package brickbreaker;
 
+import java.io.IOException;
+import java.net.InetAddress;
 import java.util.ArrayList;
 
+import gameroom.MessageType;
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -12,6 +15,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import networking.Client;
 
 public class BrickBreakController {
 
@@ -674,6 +678,13 @@ public class BrickBreakController {
     		alert.setContentText(info);
     		alert.show();
     	});
+    	try {
+			Client client = new Client(MessageType.SENDSCORE.ordinal() + " " + InetAddress.getLocalHost().getHostAddress()
+										+ " " + Game.getScore() + "Brick_Breaker");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		clock.stop();
 	}
 }

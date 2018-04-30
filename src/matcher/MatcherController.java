@@ -2,6 +2,7 @@ package matcher;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -9,7 +10,11 @@ import java.util.TimerTask;
 
 import matcher.MatcherGame;
 import matcher.Tile;
+import networking.Client;
+import gameroom.EndScreenController;
+import gameroom.Main;
 import gameroom.MainScreenController;
+import gameroom.MessageType;
 import gameroom.MultiplayerController;
 import gameroom.Score;
 import javafx.application.Platform;
@@ -185,14 +190,17 @@ public class MatcherController {
 				try {
 					Parent root = FXMLLoader.load(MainScreenController.class.getResource("EndScreen.fxml"));
 					stage = new Stage();
-					stage.setTitle("Black Hole Game");
+					stage.setTitle("Matcher");
 					stage.setScene(new Scene(root));
 					stage.toFront();
 					stage.show();
+					Client client = new Client(MessageType.SENDSCORE.ordinal() + " " + InetAddress.getLocalHost().getHostAddress() 
+												+ " " + (getMatches() + getRemainingTime()) + " Matcher");
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+				EndScreenController.setYourScore((getMatches() + getRemainingTime()) + "");
 			}
 		});
 		alert.show();

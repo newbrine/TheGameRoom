@@ -15,24 +15,26 @@ public class EndScreenController{
 	
 	@FXML
 	public Label opponentScore;
+	
+	private static EndScreenController lastCreated;
 
 	public void initialize() {
-		
+		lastCreated = this;
 	}
 	
 	public static String getYourScore() {
-		return yourScore.getText();
+		return lastCreated.yourScore.getText();
 	}
 	
 	public static String getOpponentScore() {
-		return opponentScore.getText();
+		return lastCreated.opponentScore.getText();
 	}
 	
 	public static void setYourScore(String score) {
-		yourScore.setText(score);
+		lastCreated.yourScore.setText(score);
 	}
 	
 	public static void setOpponentScore(String score) {
-		opponentScore.setText(score);
+		lastCreated.opponentScore.setText(score);
 	}
 }
