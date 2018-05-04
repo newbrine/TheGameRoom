@@ -44,12 +44,12 @@
                                  </image></ImageView>
                            </graphic>
                         </Button>
-                        <ComboBox layoutX="337.0" layoutY="415.0" prefHeight="31.0" prefWidth="220.0" promptText="Active Players" />
-                        <ComboBox layoutX="39.0" layoutY="415.0" prefHeight="31.0" prefWidth="221.0" promptText="Active Players" />
-                        <ComboBox layoutX="190.0" layoutY="195.0" prefHeight="31.0" prefWidth="221.0" promptText="Active Players" />
                         <Label layoutX="191.0" layoutY="14.0" text="Matcher:" />
                         <Label layoutX="39.0" layoutY="234.0" text="Black Hole:" />
                         <Label layoutX="337.0" layoutY="234.0" text="Brick Break:" />
+                        <Label fx:id="matcherReady" layoutX="283.0" layoutY="195.0" text="Waiting For Game" visible="false" />
+                        <Label fx:id="blackHoleReady" layoutX="132.0" layoutY="415.0" text="Waiting For Game" visible="false" />
+                        <Label fx:id="brickBreakReady" layoutX="427.0" layoutY="415.0" text="Waiting For Game" visible="false" />
                      </children>
                   </AnchorPane>
             </content>
@@ -60,14 +60,14 @@
                      <children>
                         <Label fx:id="nameLabel" layoutX="26.0" layoutY="32.0" text="name(change in code)" />
                         <Label fx:id="ageLabel" layoutX="26.0" layoutY="77.0" text="age(change in code)" />
-                        <TextArea layoutX="26.0" layoutY="131.0" prefHeight="305.0" prefWidth="219.0" />
-                        <ImageView fitHeight="180.0" fitWidth="242.0" layoutX="309.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true" />
+                        <TextArea fx:id="bio" layoutX="26.0" layoutY="131.0" prefHeight="305.0" prefWidth="219.0" />
+                        <ImageView fx:id="profilePic" fitHeight="180.0" fitWidth="242.0" layoutX="309.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true" />
                         <Label layoutX="328.0" layoutY="210.0" text="Gamescore: " />
                         <Label layoutX="326.0" layoutY="284.0" text="Wins/Losses:" />
                         <ComboBox layoutX="326.0" layoutY="315.0" prefHeight="31.0" prefWidth="201.0" promptText="Wins/Losses by Game" />
                         <Label layoutX="26.0" layoutY="112.0" text="Bio:" />
-                        <Label layoutX="430.0" layoutY="210.0" text="add score" />
-                        <Label layoutX="430.0" layoutY="284.0" text="add win/loss" />
+                        <Label fx:id="gamescore" layoutX="430.0" layoutY="210.0" text="add score" />
+                        <Label fx:id="winLoss" layoutX="430.0" layoutY="284.0" text="add win/loss" />
                      </children>
                   </AnchorPane>
             </content>

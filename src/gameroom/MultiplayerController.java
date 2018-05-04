@@ -11,6 +11,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import networking.Client;
 import networking.Server;
@@ -36,6 +39,27 @@ public class MultiplayerController {
 	@FXML
 	Label ageLabel;
 	
+	@FXML
+	TextArea bio;
+	
+	@FXML
+	Label gamescore;
+	
+	@FXML
+	ImageView profilePic;
+	
+	@FXML
+	Label winLoss;
+	
+	@FXML
+	Label matcherReady;
+	
+	@FXML
+	Label blackHoleReady;
+	
+	@FXML
+	Label brickBreakReady;
+	
 	public File userFile = new File(System.getProperty("user.dir") + "//media//user.txt");
 	public static Boolean multiplayer = false;
 	Profile profile;
@@ -55,6 +79,8 @@ public class MultiplayerController {
 		multiplayer = true;
 		nameLabel.setText(profile.getName());
 		ageLabel.setText(profile.getBirth());
+		bio.setText(profile.getBio());
+		profilePic.setImage(new Image(profile.getImageFile()));
 	}
 	
 	@FXML
@@ -112,7 +138,6 @@ public class MultiplayerController {
 	}
 	
 	public boolean waitForPlayerTwo() {
-		
 		return false;
 	}
 }
