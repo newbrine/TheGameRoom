@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="600.0" stylesheets="@EndScreen.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gameroom.EndScreenController">
+   <children>
+      <Label layoutX="181.0" layoutY="91.0" text="Game Over">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Label>
+      <Label layoutX="139.0" layoutY="202.0" text="Your Score:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="yourScore" layoutX="330.0" layoutY="209.0" text="please change" />
+      <Label layoutX="70.0" layoutY="324.0" text="Opponents Score:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="opponentScore" layoutX="330.0" layoutY="331.0" text="waiting for score" />
+      <Label fx:id="winLoss" layoutX="229.0" layoutY="421.0" text="win/loss/tie">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
