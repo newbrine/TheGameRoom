@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Tab?>
@@ -20,14 +19,6 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="600.0">
                      <children>
-                        <Button layoutX="39.0" layoutY="37.0" mnemonicParsing="false" onAction="#launchGameOne" prefHeight="161.0" prefWidth="221.0">
-                           <graphic>
-                              <ImageView fitHeight="140.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../media/galalite.PNG" />
-                                 </image></ImageView>
-                           </graphic>
-                        </Button>
                         <Button layoutX="39.0" layoutY="255.0" mnemonicParsing="false" onAction="#openGameThree" prefHeight="160.0" prefWidth="221.0">
                            <graphic>
                               <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
@@ -44,7 +35,7 @@
                                  </image></ImageView>
                            </graphic>
                         </Button>
-                        <Button layoutX="336.0" layoutY="37.0" mnemonicParsing="false" onAction="#openGameTwo">
+                        <Button layoutX="191.0" layoutY="35.0" mnemonicParsing="false" onAction="#openGameTwo">
                            <graphic>
                               <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -52,47 +43,46 @@
                                  </image></ImageView>
                            </graphic>
                         </Button>
-                        <ComboBox layoutX="337.0" layoutY="415.0" prefHeight="31.0" prefWidth="220.0" promptText="Active Players" />
-                        <ComboBox layoutX="39.0" layoutY="415.0" prefHeight="31.0" prefWidth="221.0" promptText="Active Players" />
-                        <ComboBox layoutX="336.0" layoutY="197.0" prefHeight="31.0" prefWidth="221.0" promptText="Active Players" />
-                        <ComboBox layoutX="39.0" layoutY="197.0" prefHeight="31.0" prefWidth="221.0" promptText="Active Players" />
-                        <Label layoutX="39.0" layoutY="14.0" text="Galalite 2:" />
-                        <Label layoutX="337.0" layoutY="14.0" text="Matcher:" />
+                        <Label layoutX="191.0" layoutY="14.0" text="Matcher:" />
                         <Label layoutX="39.0" layoutY="234.0" text="Black Hole:" />
                         <Label layoutX="337.0" layoutY="234.0" text="Brick Break:" />
+                        <Label fx:id="matcherReady" layoutX="283.0" layoutY="195.0" text="Waiting For Game" visible="false" />
+                        <Label fx:id="blackHoleReady" layoutX="132.0" layoutY="415.0" text="Waiting For Game" visible="false" />
+                        <Label fx:id="brickBreakReady" layoutX="427.0" layoutY="415.0" text="Waiting For Game" visible="false" />
+                        <Label fx:id="staticLabel" layoutX="58.0" layoutY="44.0" />
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab text="My Profile">
+          <Tab fx:id="profileTab" text="My Profile">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <Label fx:id="nameLabel" layoutX="26.0" layoutY="32.0" text="name(change in code)" />
                         <Label fx:id="ageLabel" layoutX="26.0" layoutY="77.0" text="age(change in code)" />
-                        <TextArea layoutX="26.0" layoutY="131.0" prefHeight="305.0" prefWidth="219.0" />
-                        <ImageView fitHeight="180.0" fitWidth="242.0" layoutX="309.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true" />
+                        <TextArea fx:id="bio" layoutX="26.0" layoutY="131.0" prefHeight="305.0" prefWidth="219.0" />
+                        <ImageView fx:id="profilePic" fitHeight="180.0" fitWidth="242.0" layoutX="309.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true" />
                         <Label layoutX="328.0" layoutY="210.0" text="Gamescore: " />
-                        <Label layoutX="326.0" layoutY="284.0" text="Wins/Losses:" />
-                        <ComboBox layoutX="326.0" layoutY="315.0" prefHeight="31.0" prefWidth="201.0" promptText="Wins/Losses by Game" />
+                        <Label layoutX="326.0" layoutY="284.0" text="Wins/Losses/Ties:" />
                         <Label layoutX="26.0" layoutY="112.0" text="Bio:" />
-                        <Label layoutX="430.0" layoutY="210.0" text="add score" />
-                        <Label layoutX="430.0" layoutY="284.0" text="add win/loss" />
+                        <Label fx:id="gamescore" layoutX="453.0" layoutY="210.0" text="add score" />
+                        <Label fx:id="winLoss" layoutX="453.0" layoutY="284.0" text="add win/loss" />
+                        <Button layoutX="398.0" layoutY="364.0" mnemonicParsing="false" text="Upload" />
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
-            <Tab text="Online Players">
+            <Tab text="Gamescore Leaderboard">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Label layoutX="20.0" layoutY="20.0" text="Online Players:">
+                        <Label layoutX="20.0" layoutY="14.0" text="Gamerscore Leaderboard:">
                            <font>
-                              <Font size="48.0" />
+                              <Font size="40.0" />
                            </font>
                         </Label>
-                        <ListView layoutX="20.0" layoutY="90.0" prefHeight="315.0" prefWidth="560.0" />
-                        <Button layoutX="482.0" layoutY="416.0" mnemonicParsing="false" text="View Profile" />
+                        <ListView fx:id="gamerscoreList" layoutX="20.0" layoutY="73.0" prefHeight="315.0" prefWidth="560.0" />
+                        <Button fx:id="leaders" layoutX="481.0" layoutY="406.0" mnemonicParsing="false" onAction="#requestGamerscores" onMouseClicked="#setResults" text="Get Leaders" />
                      </children>
                   </AnchorPane>
               </content>
