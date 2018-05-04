@@ -6,11 +6,3 @@
 	-fx-text-fill: pink;
 	-fx-background-color: linear-gradient(rgba(0,0,0,0) 0%, rgba(0,0,0,.8) 50%, rgba(0,0,0,0) 90%); 
 }
-
-.text-input {
-  -fx-control-inner-background: grey;
-  -fx-background-color: linear-gradient(to bottom, derive(-fx-text-box-border, -10%), -fx-text-box-border),
-    linear-gradient(from 0px 0px to 0px 5px, derive(-fx-control-inner-background, -9%), -fx-control-inner-background);
-  -fx-background-insets: 0, 1;
-  -fx-background-radius: 3, 2;
-}

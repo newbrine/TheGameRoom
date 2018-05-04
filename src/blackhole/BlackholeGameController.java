@@ -110,23 +110,12 @@ public class BlackholeGameController {
 		alert.setOnHidden(event -> {
 			Stage stage = (Stage) pane.getScene().getWindow();
 			stage.close();
-			if (MultiplayerController.multiplayer) {
-				try {
-					Parent root = FXMLLoader.load(MainScreenController.class.getResource("EndScreen.fxml"));
-					stage = new Stage();
-					stage.setTitle("Black Hole Game");
-					stage.setScene(new Scene(root,600,600));
-					stage.toFront();
-					stage.show();
-					Client client = new Client(MessageType.SENDSCORE.ordinal() + " "  + InetAddress.getLocalHost().getHostAddress()
-												+ " " + getClicks() + "Black_Hole");
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				Platform.runLater(() -> {
-					EndScreenController.setYourScore(getClicks());
-				});
+			try {
+				Client client = new Client(MessageType.SENDSCORE.ordinal() + " "  + InetAddress.getLocalHost().getHostAddress()
+											+ " " + getClicks() + " Black_Hole");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		});
 		alert.show();

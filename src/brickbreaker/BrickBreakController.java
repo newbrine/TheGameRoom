@@ -15,6 +15,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 import networking.Client;
 
 public class BrickBreakController {
@@ -642,6 +643,7 @@ public class BrickBreakController {
         		}
     		} else {
     			updateGUI();
+    			clock.stop();
     			gameOver("Your score is :" + game.getScore());
     		}
     	}
@@ -671,20 +673,21 @@ public class BrickBreakController {
     }
 
     private void gameOver(String info) {
-    	Platform.runLater(() -> {
-    		Alert alert = new Alert(AlertType.INFORMATION);
-    		alert.setTitle("BrickBreaker");
-    		alert.setHeaderText("Game Over");
-    		alert.setContentText(info);
-    		alert.show();
+    	Alert alert = new Alert(AlertType.INFORMATION);
+    	alert.setTitle("BrickBreaker");
+    	alert.setHeaderText("Game Over");
+    	alert.setContentText(info);
+    	alert.setOnHidden(event -> {
+			Stage stage = (Stage) pane.getScene().getWindow();
+			stage.close();
+			try {
+				Client client = new Client(MessageType.SENDSCORE.ordinal() + " " + InetAddress.getLocalHost().getHostAddress()
+										+ " " + Game.getScore() + " Brick_Breaker");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
     	});
-    	try {
-			Client client = new Client(MessageType.SENDSCORE.ordinal() + " " + InetAddress.getLocalHost().getHostAddress()
-										+ " " + Game.getScore() + "Brick_Breaker");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		clock.stop();
+    	alert.show();
 	}
 }

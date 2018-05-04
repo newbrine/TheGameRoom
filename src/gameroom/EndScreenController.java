@@ -16,6 +16,9 @@ public class EndScreenController{
 	@FXML
 	public Label opponentScore;
 	
+	@FXML
+	public Label winLoss;
+	
 	private static EndScreenController lastCreated;
 
 	public void initialize() {
@@ -36,5 +39,15 @@ public class EndScreenController{
 	
 	public static void setOpponentScore(String score) {
 		lastCreated.opponentScore.setText(score);
+	}
+	
+	public static void setWinLoss(String yourScore, String opponentScore) {
+		if (Integer.parseInt(yourScore) > Integer.parseInt(opponentScore)) {
+			lastCreated.winLoss.setText("You Win!");
+		} else if (Integer.parseInt(yourScore) < Integer.parseInt(opponentScore)) {
+			lastCreated.winLoss.setText("You Lose!");
+		} else {
+			lastCreated.winLoss.setText("You Tied!");
+		}
 	}
 }

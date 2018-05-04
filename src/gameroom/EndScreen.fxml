@@ -23,7 +23,7 @@
          </font>
       </Label>
       <Label fx:id="opponentScore" layoutX="330.0" layoutY="331.0" text="waiting for score" />
-      <Label layoutX="229.0" layoutY="421.0" text="win/loss/tie">
+      <Label fx:id="winLoss" layoutX="229.0" layoutY="421.0" text="win/loss/tie">
          <font>
             <Font size="36.0" />
          </font>

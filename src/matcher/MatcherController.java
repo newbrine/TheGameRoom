@@ -186,21 +186,11 @@ public class MatcherController {
 		alert.setOnHidden(event -> {
 			Stage stage = (Stage) grid.getScene().getWindow();
 			stage.close();
-			if (MultiplayerController.multiplayer) {
-				try {
-					Parent root = FXMLLoader.load(MainScreenController.class.getResource("EndScreen.fxml"));
-					stage = new Stage();
-					stage.setTitle("Matcher");
-					stage.setScene(new Scene(root));
-					stage.toFront();
-					stage.show();
-					Client client = new Client(MessageType.SENDSCORE.ordinal() + " " + InetAddress.getLocalHost().getHostAddress() 
-												+ " " + (getMatches() + getRemainingTime()) + " Matcher");
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				EndScreenController.setYourScore((getMatches() + getRemainingTime()) + "");
+			try {
+				Client client = new Client(MessageType.SENDSCORE.ordinal() + " " + InetAddress.getLocalHost().getHostAddress() 
+						+ " " + (getMatches() + getRemainingTime()) + " Matcher");
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
 		});
 		alert.show();

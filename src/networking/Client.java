@@ -2,7 +2,6 @@ package networking;
 
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
@@ -12,7 +11,7 @@ public class Client {
 
 	private Socket socket;
 
-	private final String serverIP = InetAddress.getLocalHost().getHostAddress();
+	private final String serverIP = "10.253.202.133";
 	private final int portNumber  = 8888;
 	private BadNews badNews = new BadNews();
 

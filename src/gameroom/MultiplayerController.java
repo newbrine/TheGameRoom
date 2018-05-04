@@ -53,11 +53,8 @@ public class MultiplayerController {
 			e.printStackTrace();
 		}
 		multiplayer = true;
-		//Platform.runLater(() -> {
-			System.out.println("Name" + profile.getName());
-			nameLabel.setText(profile.getName());
-			ageLabel.setText(profile.getBirth());
-		//});
+		nameLabel.setText(profile.getName());
+		ageLabel.setText(profile.getBirth());
 	}
 	
 	@FXML
