@@ -20,14 +20,6 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="600.0">
                      <children>
-                        <Button layoutX="39.0" layoutY="37.0" mnemonicParsing="false" onAction="#launchGameOne" prefHeight="161.0" prefWidth="221.0">
-                           <graphic>
-                              <ImageView fitHeight="140.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../media/galalite.PNG" />
-                                 </image></ImageView>
-                           </graphic>
-                        </Button>
                         <Button layoutX="39.0" layoutY="255.0" mnemonicParsing="false" onAction="#openGameThree" prefHeight="160.0" prefWidth="221.0">
                            <graphic>
                               <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
@@ -44,7 +36,7 @@
                                  </image></ImageView>
                            </graphic>
                         </Button>
-                        <Button layoutX="336.0" layoutY="37.0" mnemonicParsing="false" onAction="#openGameTwo">
+                        <Button layoutX="191.0" layoutY="35.0" mnemonicParsing="false" onAction="#openGameTwo">
                            <graphic>
                               <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -54,10 +46,8 @@
                         </Button>
                         <ComboBox layoutX="337.0" layoutY="415.0" prefHeight="31.0" prefWidth="220.0" promptText="Active Players" />
                         <ComboBox layoutX="39.0" layoutY="415.0" prefHeight="31.0" prefWidth="221.0" promptText="Active Players" />
-                        <ComboBox layoutX="336.0" layoutY="197.0" prefHeight="31.0" prefWidth="221.0" promptText="Active Players" />
-                        <ComboBox layoutX="39.0" layoutY="197.0" prefHeight="31.0" prefWidth="221.0" promptText="Active Players" />
-                        <Label layoutX="39.0" layoutY="14.0" text="Galalite 2:" />
-                        <Label layoutX="337.0" layoutY="14.0" text="Matcher:" />
+                        <ComboBox layoutX="190.0" layoutY="195.0" prefHeight="31.0" prefWidth="221.0" promptText="Active Players" />
+                        <Label layoutX="191.0" layoutY="14.0" text="Matcher:" />
                         <Label layoutX="39.0" layoutY="234.0" text="Black Hole:" />
                         <Label layoutX="337.0" layoutY="234.0" text="Brick Break:" />
                      </children>

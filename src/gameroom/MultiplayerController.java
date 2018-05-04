@@ -58,17 +58,6 @@ public class MultiplayerController {
 	}
 	
 	@FXML
-	public void launchGameOne() {
-		try {
-			profile = new Profile();
-			client = new Client(MessageType.REQUESTGAME.ordinal() + " Galalite_2 " + profile.getID());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
-	@FXML
 	public void openGameTwo() {
 		try {
 			profile = new Profile();
