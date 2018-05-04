@@ -3,8 +3,10 @@ package networking;
 import java.io.File;
 import java.io.IOException;
 import java.net.InetAddress;
+import java.util.Arrays;
 import java.util.List;
 
+import gameroom.BadNews;
 import gameroom.EndScreenController;
 import gameroom.MainScreenController;
 import gameroom.MessageType;
@@ -13,11 +15,17 @@ import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import profile.HighScores;
 import profile.Profile;
+import profile.Stats;
 
 public class MessageHandler {
 	Profile profile;
+	BadNews badNews = new BadNews();
+	Stats stats;
+	HighScores highscores;
 	public MessageHandler() {
 		
 	}
@@ -32,6 +40,15 @@ public class MessageHandler {
 			startGame(message);
 		} else if(ord == MessageType.SENDSCORE.ordinal()) {
 			getOpponentsScore(message);
+		} else if(ord == MessageType.REQUESTPROFILES.ordinal()) {
+			String[] messageSplit = message.split(" ");
+			stats = new Stats(messageSplit[1], messageSplit[2], messageSplit[3], messageSplit[4]);
+		} else if(ord == MessageType.REQUESTGAMERSCORES.ordinal()) {
+			System.out.println(message);
+			String[] gs = message.split(" ");
+			List<String> gamerscores = Arrays.asList(gs);
+			HighScores highscores = new HighScores(gamerscores);
+			
 		}
 	}
 
@@ -39,7 +56,7 @@ public class MessageHandler {
 		try {
 			profile = new Profile();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			badNews.badNews(e.getMessage());
 			e.printStackTrace();
 		}
 		profile.setID(message);
@@ -76,7 +93,7 @@ public class MessageHandler {
 					EndScreenController.setOpponentScore(scores[0]);
 					EndScreenController.setWinLoss(scores[1], scores[0]);
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
+					badNews.badNews(e.getMessage());
 					e.printStackTrace();
 				}
 			}

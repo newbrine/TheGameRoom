@@ -10,7 +10,7 @@ import gameroom.BadNews;
 public class Server {
 
 	private final int portNum = 8888;
-	private MessageHandler thingDoer = new MessageHandler();
+	private MessageHandler messageHandler = new MessageHandler();
 	private ServerSocket server;
 	private BadNews bad;
 
@@ -47,7 +47,7 @@ public class Server {
 				sb.append(responses.readLine());
 			}
 			System.out.println(sb.toString());
-			thingDoer.handleMessage(sb.toString());
+			messageHandler.handleMessage(sb.toString());
 			s.close();
 
 		} catch (Exception e) {
